@@ -83,3 +83,24 @@
 .backSpaceBtn:active {
   background-color: rgb(144, 27, 27);
 }
+
+.textareaSpace {
+  font-size: 30px;
+  font-family: "Roboto", sans-serif;
+  height: 300px;
+  width: 830px;
+}
+
+.copyBtn {
+  background-color: rgb(178, 178, 178);
+  height: 50px;
+  width: 100px;
+  font-size: 20px;
+  border-radius: 50px;
+  border: none;
+
+  font-family: "Roboto", sans-serif;
+}
+.copyBtn:active {
+  background-color: rgb(99, 98, 98);
+}

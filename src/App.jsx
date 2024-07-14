@@ -7,6 +7,21 @@ function App() {
   const [isCaps, setIsCaps] = useState(false);
   const [isShift, setIsShift] = useState(false);
 
+  const copyText = () => {
+    // method 1 for copy text
+    // const temp = document.createElement("input");
+    // temp.type = "text";
+    // temp.value = inputValue;
+
+    // document.body.appendChild(temp);
+    // temp.select();
+    // document.execCommand("Copy");
+    // document.body.removeChild(temp);
+
+    // method 2 for copy text
+    navigator.clipboard.writeText(inputValue);
+  };
+
   const SelectKeyValue = (word) => {
     let newValue =
       inputValue.slice(0, cursorPos) +
@@ -21,51 +36,49 @@ function App() {
     console.log(cursorPos);
   }, [cursorPos]);
   return (
-    <div>
-      <textarea
-        style={{ width: "500px", heigth: "500px" }}
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        onKeyUp={(e) => {
-          if (e.keyCode == 20) {
-            setIsCaps(!isCaps);
-          }
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "column",
+      }}
+    >
+      <div>
+        <h1 style={{ color: "red", fontFamily: "Roboto, sans-serif" }}>
+          Virtual KeyBoard
+        </h1>
+      </div>
+      <div>
+        <textarea
+          className="textareaSpace"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          onKeyUp={(e) => {
+            if (e.keyCode == 20) {
+              setIsCaps(!isCaps);
+            }
 
-          if (e.keyCode == 16) {
-            setIsShift(!isShift);
-          }
-          if (e.keyCode == 8) {
-            setCursorPos(cursorPos - 1);
-          } else {
-            setCursorPos(cursorPos + 1);
-          }
-          const { selectionStart } = e.target;
+            if (e.keyCode == 16) {
+              setIsShift(!isShift);
+            }
+            if (e.keyCode == 8) {
+              setCursorPos(cursorPos - 1);
+            } else {
+              setCursorPos(cursorPos + 1);
+            }
+            const { selectionStart } = e.target;
 
-          setCursorPos(selectionStart);
-        }}
-        onMouseUp={(e) => {
-          const { selectionStart } = e.target;
+            setCursorPos(selectionStart);
+          }}
+          onMouseUp={(e) => {
+            const { selectionStart } = e.target;
 
-          setCursorPos(selectionStart);
-          // txt1.slice(0, 3) + "bar" + txt1.slice(3);
-        }}
-      />
-      <button
-        className="backSpaceBtn"
-        onClick={() => {
-          const newValue =
-            inputValue.slice(0, cursorPos - 1) +
-            inputValue.slice(cursorPos, inputValue.length);
-          setInputValue(newValue);
-          console.log(cursorPos);
+            setCursorPos(selectionStart);
+            // txt1.slice(0, 3) + "bar" + txt1.slice(3);
+          }}
+        />
+      </div>
 
-          if (cursorPos !== 0) {
-            setCursorPos(cursorPos - 1);
-          }
-        }}
-      >
-        BackSpace
-      </button>
       <div>
         <button
           className="btnClass"
@@ -151,6 +164,22 @@ function App() {
         >
           {isShift ? "|" : "\\"}
         </button>
+        <button
+          className="backSpaceBtn"
+          onClick={() => {
+            const newValue =
+              inputValue.slice(0, cursorPos - 1) +
+              inputValue.slice(cursorPos, inputValue.length);
+            setInputValue(newValue);
+            console.log(cursorPos);
+
+            if (cursorPos !== 0) {
+              setCursorPos(cursorPos - 1);
+            }
+          }}
+        >
+          BackSpace
+        </button>
       </div>
 
       <div>
@@ -233,6 +262,9 @@ function App() {
           onClick={() => SelectKeyValue(isShift ? "}" : "]")}
         >
           {isShift ? "}" : "]"}
+        </button>
+        <button className="enterBtn" onClick={() => SelectKeyValue("\n")}>
+          Enter
         </button>
       </div>
       <div>
@@ -320,8 +352,8 @@ function App() {
         >
           {isShift ? "'" : '"'}
         </button>
-        <button className="enterBtn" onClick={() => SelectKeyValue("\n")}>
-          Enter
+        <button className="copyBtn" onClick={copyText}>
+          Copy
         </button>
       </div>
       <div>

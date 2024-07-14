@@ -23,6 +23,8 @@ function App() {
   };
 
   const SelectKeyValue = (word) => {
+    console.log(word, "key name");
+
     let newValue =
       inputValue.slice(0, cursorPos) +
       word +
@@ -32,9 +34,9 @@ function App() {
     setCursorPos(cursorPos + 1);
   };
 
-  useEffect(() => {
-    console.log(cursorPos);
-  }, [cursorPos]);
+  // useEffect(() => {
+  //   console.log(cursorPos);
+  // }, [cursorPos]);
   return (
     <div
       style={{
@@ -50,10 +52,40 @@ function App() {
       </div>
       <div>
         <textarea
+          autoFocus={true}
           className="textareaSpace"
           value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+          onChange={(e) => {
+            setInputValue(e.target.value);
+          }}
           onKeyUp={(e) => {
+            console.log(e.key, " name");
+
+            let foundBtn = null;
+            const allBtns = document.querySelectorAll("button");
+            allBtns.forEach((item) => {
+              if (item.textContent == e.key) {
+                console.log(item.textContent, "yeha par");
+                foundBtn = item;
+              }
+            });
+
+            if (foundBtn) {
+              if (["1", "2", "3", "4"].includes(foundBtn.textContent)) {
+                foundBtn.style.backgroundColor = "aqua";
+              } else {
+                foundBtn.style.backgroundColor = "yellow";
+              }
+
+              setTimeout(() => {
+                if (["1", "2", "3", "4"].includes(foundBtn.textContent)) {
+                  foundBtn.style.backgroundColor = "aquamarine";
+                } else {
+                  foundBtn.style.backgroundColor = "white";
+                }
+              }, 500);
+            }
+
             if (e.keyCode == 20) {
               setIsCaps(!isCaps);
             }
@@ -193,7 +225,9 @@ function App() {
         </button>
         <button
           className="btnWord"
-          onClick={() => SelectKeyValue(isCaps || isShift ? "Q" : "q")}
+          onClick={() => {
+            SelectKeyValue(isCaps || isShift ? "Q" : "q");
+          }}
         >
           {isCaps || isShift ? "Q" : "q"}
         </button>

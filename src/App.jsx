@@ -93,7 +93,23 @@ function App() {
               }
 
               setTimeout(() => {
-                if (["1", "2", "3", "4"].includes(foundBtn.textContent)) {
+                if (
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9",
+                    "0",
+                    "`",
+                    "-",
+                    "+",
+                  ].includes(foundBtn.textContent)
+                ) {
                   foundBtn.style.backgroundColor = "aquamarine";
                 } else {
                   foundBtn.style.backgroundColor = "white";

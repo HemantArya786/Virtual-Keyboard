@@ -65,14 +65,29 @@ function App() {
             const allBtns = document.querySelectorAll("button");
             allBtns.forEach((item) => {
               if (item.textContent == e.key) {
-                console.log(item.textContent, "yeha par");
                 foundBtn = item;
               }
             });
 
             if (foundBtn) {
-              if (["1", "2", "3", "4"].includes(foundBtn.textContent)) {
-                foundBtn.style.backgroundColor = "aqua";
+              if (
+                [
+                  "1",
+                  "2",
+                  "3",
+                  "4",
+                  "5",
+                  "6",
+                  "7",
+                  "8",
+                  "9",
+                  "0",
+                  "`",
+                  "-",
+                  "+",
+                ].includes(foundBtn.textContent)
+              ) {
+                foundBtn.style.backgroundColor = "aqua ";
               } else {
                 foundBtn.style.backgroundColor = "yellow";
               }

@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+.btnClass {
+  background-color: aquamarine;
+  height: 50px;
+  width: 50px;
+  font-size: 20px;
+  border-radius: 50px;
+  border: none;
+
+  font-family: "Roboto", sans-serif;
+}
+.btnClass:active {
+  background-color: aqua;
+}
+
+.btnWord {
+  height: 50px;
+  width: 50px;
+  font-size: 20px;
+  border-radius: 50px;
+  border: none;
+  font-family: "Roboto", sans-serif;
+}
+.btnWord:active {
+  background-color: grey;
+}
+
+.spaceBtn {
+  background-color: yellow;
+  height: 50px;
+  width: 300px;
+  border-radius: 45px;
+  font-size: 19px;
+  font-weight: 500;
+  border: none;
+  font-family: "Roboto", sans-serif;
+}
+
+.spaceBtn:active {
+  background-color: rgb(171, 171, 21);
+}
+
+.tabBtn {
+  background-color: yellow;
+  height: 50px;
+  width: 80px;
+  border-radius: 45px;
+  font-size: 19px;
+  font-weight: 500;
+  border: none;
+  font-family: "Roboto", sans-serif;
+}
+.tabBtn:active {
+  background-color: rgb(171, 171, 21);
+}
+
+.enterBtn {
+  background-color: lightgreen;
+  height: 50px;
+  width: 100px;
+  border-radius: 45px;
+  font-size: 19px;
+  font-weight: 500;
+  border: none;
+  font-family: "Roboto", sans-serif;
+}
+
+.enterBtn:active {
+  background-color: rgb(70, 218, 70);
+}
+
+.backSpaceBtn {
+  background-color: red;
+  height: 50px;
+  width: 140px;
+  border-radius: 45px;
+  font-size: 19px;
+  font-weight: 500;
+  border: none;
+  font-family: "Roboto", sans-serif;
+}
+.backSpaceBtn:active {
+  background-color: rgb(144, 27, 27);
+}
